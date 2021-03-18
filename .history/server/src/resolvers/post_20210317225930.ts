@@ -51,13 +51,15 @@ export class PostResolver {
 			.getRepository(Post)
 			.createQueryBuilder('p')
 			.orderBy('"createdAt"', 'DESC')
-			.take(realLimitPlusOne)
+			.take(realLimit)
 
 		if (cursor) {
 			qb.where('"createdAt" < :cursor', { cursor: new Date(parseInt(cursor)) })
 		}
 
 		const posts = await qb.getMany()
+
+		console.log(posts.length, realLimitPlusOne)
 
 		return { posts: posts.slice(0, realLimit), hasMore: posts.length === realLimitPlusOne }
 	}

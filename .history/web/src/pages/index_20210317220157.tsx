@@ -37,13 +37,13 @@ const Index = () => {
 					))}
 				</Stack>
 			)}
-			{data && data.posts.hasMore && (
+			{data && (
 				<Flex>
 					<Button
 						onClick={() => {
 							setVariables({
 								limit: variables.limit,
-								cursor: data.posts.posts[data.posts.posts.length - 1].createdAt,
+								cursor: data.posts[data.posts.length - 1].createdAt,
 							})
 						}}
 						m='auto'

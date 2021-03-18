@@ -20,6 +20,7 @@ const cursorPagination = (): Resolver => {
 	return (_parent, fieldArgs, cache, info) => {
 		const { parentKey: entityKey, fieldName } = info
 		const allFields = cache.inspectFields(entityKey)
+		console.log('allFields: ', allFields)
 		const fieldInfos = allFields.filter((info) => info.fieldName === fieldName)
 		const size = fieldInfos.length
 		if (size === 0) {
@@ -35,6 +36,7 @@ const cursorPagination = (): Resolver => {
 			const key = cache.resolveFieldByKey(entityKey, fi.fieldKey) as string
 			const data = cache.resolve(key, 'posts') as string[]
 			const _hasMore = cache.resolve(key, 'hasMore')
+			console.log(_hasMore)
 			if (!_hasMore) {
 				hasMore = _hasMore as boolean
 			}

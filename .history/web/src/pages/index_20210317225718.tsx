@@ -37,7 +37,7 @@ const Index = () => {
 					))}
 				</Stack>
 			)}
-			{data && data.posts.hasMore && (
+			{data && data.posts.hasMore ? (
 				<Flex>
 					<Button
 						onClick={() => {
@@ -46,14 +46,14 @@ const Index = () => {
 								cursor: data.posts.posts[data.posts.posts.length - 1].createdAt,
 							})
 						}}
-						m='auto'
 						isLoading={fetching}
+						m='auto'
 						my={8}
 					>
-						Load more
+						load more
 					</Button>
 				</Flex>
-			)}
+			) : null}
 		</Layout>
 	)
 }

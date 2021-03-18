@@ -12,6 +12,8 @@ const Index = () => {
 		variables,
 	})
 
+	console.log(data)
+
 	if (!fetching && !data) {
 		return <div>you got no data for some reason</div>
 	}
@@ -37,7 +39,7 @@ const Index = () => {
 					))}
 				</Stack>
 			)}
-			{data && data.posts.hasMore && (
+			{data && data.posts.hasMore ? (
 				<Flex>
 					<Button
 						onClick={() => {
@@ -53,7 +55,7 @@ const Index = () => {
 						Load more
 					</Button>
 				</Flex>
-			)}
+			) : null}
 		</Layout>
 	)
 }
