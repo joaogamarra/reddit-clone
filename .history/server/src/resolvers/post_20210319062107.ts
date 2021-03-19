@@ -53,14 +53,13 @@ export class PostResolver {
 
 		await getConnection().query(
 			`
-		  START TRANSACTION;
-		  insert into updoot ("userId", "postId", value)
-		  values (${userId},${postId},${realValue});
-		  update post
-		  set points = points + ${realValue}
-		  where id = ${postId};
-		  COMMIT;
-		  `
+			START TRANSACTION;
+			insert into updoot ("userId", "postId", value)
+			values(${userId}, ${postId}, ${realValue});
+		update post
+		set points = points + ${realValue}
+		where id = ${postId};
+		COMMIT;`
 		)
 
 		return true

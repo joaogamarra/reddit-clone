@@ -14,6 +14,7 @@ import session from 'express-session'
 import connectRedis from 'connect-redis'
 import cors from 'cors'
 import path from 'path'
+import { Updoot } from './entities/Updoot'
 
 const main = async () => {
 	const conn = await createConnection({
@@ -24,7 +25,7 @@ const main = async () => {
 		logging: true,
 		synchronize: true,
 		migrations: [path.join(__dirname, './migrations/*')],
-		entities: [Post, User],
+		entities: [Post, User, Updoot],
 	})
 
 	await conn.runMigrations()
